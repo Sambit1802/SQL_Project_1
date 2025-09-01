@@ -12,8 +12,7 @@ FROM orders;
 
 2. **Calculate the total revenue generated from pizza sales.**
 ```sql
-SELECT 
-ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
+SELECT ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
 FROM order_details AS od
 LEFT JOIN pizzas AS p ON od.pizza_id = p.pizza_id;
 ```
@@ -21,10 +20,9 @@ LEFT JOIN pizzas AS p ON od.pizza_id = p.pizza_id;
 
 3. **Identify the highest-priced pizza.**
 ```sql
-SELECT 
-pt.name, p.price
-FROM pizza_types AS pt LEFT JOIN
-pizzas AS p ON pt.pizza_type_id = p.pizza_type_id
+SELECT pt.name, p.price
+FROM pizza_types AS pt
+LEFT JOIN pizzas AS p ON pt.pizza_type_id = p.pizza_type_id
 GROUP BY pt.name , p.price
 ORDER BY p.price DESC
 LIMIT 1;
@@ -32,34 +30,27 @@ LIMIT 1;
 
 
 
-# (4) Identify the most common pizza size ordered.
-
-SELECT 
-    p.size, SUM(od.quantity) AS total_quantity
-FROM
-    order_details AS od
-        LEFT JOIN
-    pizzas AS p ON od.pizza_id = p.pizza_id
+4. **Identify the most common pizza size ordered.**
+```sql
+SELECT p.size, SUM(od.quantity) AS total_quantity
+FROM order_details AS od
+LEFT JOIN pizzas AS p ON od.pizza_id = p.pizza_id
 GROUP BY p.size
 ORDER BY total_quantity DESC
 LIMIT 1;
+```
 
 
-
-# (5) List the top 5 most ordered pizza types along with their quantities.
-
-SELECT 
-    pt.name, pt.category, SUM(od.quantity) AS Total_quantity
-FROM
-    pizzas AS p
-        RIGHT JOIN
-    order_details AS od ON p.pizza_id = od.pizza_id
-        RIGHT JOIN
-    pizza_types AS pt ON p.pizza_type_id = pt.pizza_type_id
+5. **List the top 5 most ordered pizza types along with their quantities.**
+```sql
+SELECT pt.name, pt.category, SUM(od.quantity) AS Total_quantity
+FROM pizzas AS p
+RIGHT JOIN order_details AS od ON p.pizza_id = od.pizza_id
+RIGHT JOIN pizza_types AS pt ON p.pizza_type_id = pt.pizza_type_id
 GROUP BY pt.name , pt.category
 ORDER BY Total_quantity DESC
 LIMIT 5;
-
+```
 
 
 # (6) Find the total quantity of each pizza category ordered.
