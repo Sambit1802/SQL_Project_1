@@ -2,7 +2,7 @@
 and 13 questions to solve from basic level to intermediate to advance.
 (Data source, questions and guidance are from wsCube Tech youtube video and description)
 
-# (1) Retrieve the total number of orders placed.
+1. **Retrieve the total number of orders placed.**:
 ```sql
 SELECT 
 COUNT(order_id) AS Total_orders
