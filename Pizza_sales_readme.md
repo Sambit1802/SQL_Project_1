@@ -19,17 +19,16 @@ LEFT JOIN pizzas AS p ON od.pizza_id = p.pizza_id;
 ```
 
 
-# (3) Identify the highest-priced pizza.
-
+3. **Identify the highest-priced pizza.**
+```sql
 SELECT 
-    pt.name, p.price
-FROM
-    pizza_types AS pt
-        LEFT JOIN
-    pizzas AS p ON pt.pizza_type_id = p.pizza_type_id
+pt.name, p.price
+FROM pizza_types AS pt LEFT JOIN
+pizzas AS p ON pt.pizza_type_id = p.pizza_type_id
 GROUP BY pt.name , p.price
 ORDER BY p.price DESC
 LIMIT 1;
+```
 
 
 
