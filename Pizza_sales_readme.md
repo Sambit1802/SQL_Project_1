@@ -11,14 +11,12 @@ FROM orders;
 
 
 # (2) Calculate the total revenue generated from pizza sales.
-
+```sql
 SELECT 
-    ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
-FROM
-    order_details AS od
-        LEFT JOIN
-    pizzas AS p ON od.pizza_id = p.pizza_id;
-
+ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
+FROM order_details AS od
+LEFT JOIN pizzas AS p ON od.pizza_id = p.pizza_id;
+```
 
 
 # (3) Identify the highest-priced pizza.
