@@ -5,9 +5,9 @@ and 13 questions to solve from basic level to intermediate to advance.
 # (1) Retrieve the total number of orders placed
 '''sql
 SELECT 
-    COUNT(order_id) AS Total_orders
+COUNT(order_id) AS Total_orders
 FROM
-    orders;
+orders;
 '''
 
 
