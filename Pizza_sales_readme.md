@@ -72,27 +72,22 @@ ORDER BY hour;
 ```
 
 
-# (8) Join relevant tables to find the category-wise distribution of pizzas.
-
-SELECT 
-    category, COUNT(name) AS count
-FROM
-    pizza_types
+8. **Join relevant tables to find the category-wise distribution of pizzas.**
+```sql
+SELECT category, COUNT(name) AS count
+FROM pizza_types
 GROUP BY category;
+```
 
 
-
-# (9) Group the orders by date and calculate the average number of pizzas ordered per day.
-
-SELECT 
-    ROUND(AVG(quantity), 0) AS avg_orders
-FROM
-    (SELECT 
-        o.order_date, SUM(od.quantity) AS quantity
-    FROM
-        orders AS o
-    LEFT JOIN order_details AS od ON o.order_id = od.order_id
-    GROUP BY o.order_date) AS sub;
+9. **Group the orders by date and calculate the average number of pizzas ordered per day.**
+```sql
+SELECT ROUND(AVG(quantity), 0) AS avg_orders
+FROM (SELECT o.order_date, SUM(od.quantity) AS quantity
+FROMorders AS o
+LEFT JOIN order_details AS od ON o.order_id = od.order_id
+GROUP BY o.order_date) AS sub;
+```
 
 
 
