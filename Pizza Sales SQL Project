@@ -3,12 +3,12 @@ and 13 questions to solve from basic level to intermediate to advance.
 (Data source, questions and guidance are from wsCube Tech youtube video and description)
 
 # (1) Retrieve the total number of orders placed
-
+'''
 SELECT 
     COUNT(order_id) AS Total_orders
 FROM
     orders;
-
+'''
 
 
 # (2) Calculate the total revenue generated from pizza sales.
