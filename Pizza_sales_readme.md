@@ -10,7 +10,7 @@ FROM orders;
 ```
 
 
-# (2) Calculate the total revenue generated from pizza sales.
+2. **Calculate the total revenue generated from pizza sales.**
 ```sql
 SELECT 
 ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
