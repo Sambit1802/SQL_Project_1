@@ -29,7 +29,6 @@ LIMIT 1;
 ```
 
 
-
 4. **Identify the most common pizza size ordered.**
 ```sql
 SELECT p.size, SUM(od.quantity) AS total_quantity
@@ -53,30 +52,24 @@ LIMIT 5;
 ```
 
 
-# (6) Find the total quantity of each pizza category ordered.
-
-SELECT 
-    pt.category, SUM(od.quantity) AS Total_quantity
-FROM
-    pizzas AS p
-        RIGHT JOIN
-    order_details AS od ON p.pizza_id = od.pizza_id
-        RIGHT JOIN
-    pizza_types AS pt ON p.pizza_type_id = pt.pizza_type_id
+6. **Find the total quantity of each pizza category ordered.**
+```sql
+SELECT pt.category, SUM(od.quantity) AS Total_quantity
+FROM pizzas AS p
+RIGHT JOIN order_details AS od ON p.pizza_id = od.pizza_id
+RIGHT JOIN pizza_types AS pt ON p.pizza_type_id = pt.pizza_type_id
 GROUP BY pt.category
 ORDER BY Total_quantity DESC;
+```
 
 
-
-# (7) Determine the distribution of orders by hour of the day.
-
-SELECT 
-    HOUR(order_time) AS hour, COUNT(order_id) AS order_count
-FROM
-    orders
+7. **Determine the distribution of orders by hour of the day.**
+```sql
+SELECT HOUR(order_time) AS hour, COUNT(order_id) AS order_count
+FROM orders
 GROUP BY hour
 ORDER BY hour;
-
+```
 
 
 # (8) Join relevant tables to find the category-wise distribution of pizzas.
