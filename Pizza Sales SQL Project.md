@@ -6,7 +6,7 @@ and 13 questions to solve from basic level to intermediate to advance.
 '''sql
 SELECT 
 COUNT(order_id) AS Total_orders
-FROM orders;
+FROM orders
 '''
 
 
